@@ -1,1 +1,1 @@
-I created this repo to digitize my verification notes. It includes SystemVerilog constraints and assertions, tricky language constructs, OOP patterns, UVM and methodology notes, and some introductory formal methods material.
+I created this repo to digitize my verification notes. It includes SystemVerilog constraints and assertions, IPC, threads, tricky language constructs, OOP patterns, UVM and methodology notes, and some introductory formal methods material.
