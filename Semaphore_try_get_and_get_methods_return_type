@@ -1,0 +1,40 @@
+/*The below code demostrates how the blocking methods put() and get() have a return type void and how try_get() and try_put() are functions and have a return value of either 0 or 1 */
+
+
+
+class sem_demo;
+  semaphore sem;
+
+  function new();
+    sem = new(1);
+  endfunction
+
+  task returntypes_sem_methods();
+    fork
+      begin
+        #2;  // Short delay
+        $display("@%0t: Producer: putting key", $time);
+        sem.put(1);
+      end
+
+      begin
+        #5;
+        if (sem.try_get(1)) $display("@%0t: try_get succeeded (returned 1)", $time);
+        else $display("@%0t: try_get failed (returned 0)", $time);
+
+        if (sem.get(1))                                                                     // Error, the get() method is a task and has a return type void and cannot be used as an if condition// get() is a blocking construct 
+        $display("@%0t: get completed", $time);
+        sem.put(1);
+      end
+    join_any
+    wait fork;
+  endtask
+endclass
+
+module tb;
+  initial begin
+    sem_demo demo = new();  // Declare & init
+    demo.returntypes_sem_methods();
+    #20 $finish;
+  end
+endmodule
