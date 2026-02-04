@@ -22,7 +22,7 @@ class sem_demo;
         if (sem.try_get(1)) $display("@%0t: try_get succeeded (returned 1)", $time);
         else $display("@%0t: try_get failed (returned 0)", $time);
 
-        if (sem.get(1))                                                                     // Error, the get() method is a task and has a return type void and cannot be used as an if condition// get() is a blocking construct 
+        if (sem.get(1))                                                                     // Error, the get() method is a task and has a return type void and cannot be used as a "condition" for "if" statement // get() is a blocking construct 
         $display("@%0t: get completed", $time);
         sem.put(1);
       end
