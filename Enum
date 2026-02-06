@@ -1,0 +1,16 @@
+//iterating through enum members and theit vales using enum methods
+
+program tb(); 
+typedef enum { red, green, blue, yellow } Colors;
+Colors c = c.first;
+
+  initial begin
+    forever begin
+$display( "%s : %d\n", c.name, c );
+if( c == c.last ) break;
+c = c.next;
+end
+  end
+endprogram
+
+
