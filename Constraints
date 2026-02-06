@@ -1,0 +1,25 @@
+//generate a 64 element diagonal matrix 
+
+class matrix; 
+ rand int a[8][8]; 
+    constraint c1 {foreach(a[i,j]) 
+                if(i==j) 
+                      a[i][j] == 1; 
+                else 
+                  a[i][j] == 0;} 
+endclass 
+
+module diagonal_matrix; 
+  initial 
+    begin 
+     matrix diag; 
+    diag = new; 
+      assert(diag.randomize());
+      $display("Array : %p", diag.a); 
+  end 
+endmodule
+
+
+
+// generate the array in ascending or descending order and then use arr.shuffle
+                             
